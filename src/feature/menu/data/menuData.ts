@@ -17,7 +17,6 @@ export const menuData: MenuType[] = [
     path: '/dev',
     children: [
         { id: 'dev-1', name: 'Dev Home', path: '/dev' },
-        { id: 'dev-2', name: 'JSON Formatter', path: '/dev/json-formatter' },
         { id: 'dev-3', name: 'JSON Editor', path: '/dev/json-editor' },
     ]
   },
@@ -25,5 +24,9 @@ export const menuData: MenuType[] = [
     id: 'visual',
     name: 'Visual',
     path: '/visual',
+    children: [
+        { id: 'visual-0', name: 'Visual Home', path: '/visual' },
+        { id: 'visual-1', name: 'Color Converter', path: '/visual/color-converter' },
+    ]
   },
 ];

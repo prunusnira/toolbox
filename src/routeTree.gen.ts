@@ -12,7 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as VisualIndexRouteImport } from './routes/visual/index'
 import { Route as DevIndexRouteImport } from './routes/dev/index'
-import { Route as DevJsonFormatterRouteImport } from './routes/dev/json-formatter'
+import { Route as VisualColorConverterRouteImport } from './routes/visual/color-converter'
 import { Route as DevJsonEditorRouteImport } from './routes/dev/json-editor'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo.tanstack-query'
 
@@ -31,9 +31,9 @@ const DevIndexRoute = DevIndexRouteImport.update({
   path: '/dev/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DevJsonFormatterRoute = DevJsonFormatterRouteImport.update({
-  id: '/dev/json-formatter',
-  path: '/dev/json-formatter',
+const VisualColorConverterRoute = VisualColorConverterRouteImport.update({
+  id: '/visual/color-converter',
+  path: '/visual/color-converter',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DevJsonEditorRoute = DevJsonEditorRouteImport.update({
@@ -51,7 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/dev/json-editor': typeof DevJsonEditorRoute
-  '/dev/json-formatter': typeof DevJsonFormatterRoute
+  '/visual/color-converter': typeof VisualColorConverterRoute
   '/dev': typeof DevIndexRoute
   '/visual': typeof VisualIndexRoute
 }
@@ -59,7 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/dev/json-editor': typeof DevJsonEditorRoute
-  '/dev/json-formatter': typeof DevJsonFormatterRoute
+  '/visual/color-converter': typeof VisualColorConverterRoute
   '/dev': typeof DevIndexRoute
   '/visual': typeof VisualIndexRoute
 }
@@ -68,7 +68,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/dev/json-editor': typeof DevJsonEditorRoute
-  '/dev/json-formatter': typeof DevJsonFormatterRoute
+  '/visual/color-converter': typeof VisualColorConverterRoute
   '/dev/': typeof DevIndexRoute
   '/visual/': typeof VisualIndexRoute
 }
@@ -78,7 +78,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/tanstack-query'
     | '/dev/json-editor'
-    | '/dev/json-formatter'
+    | '/visual/color-converter'
     | '/dev'
     | '/visual'
   fileRoutesByTo: FileRoutesByTo
@@ -86,7 +86,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/tanstack-query'
     | '/dev/json-editor'
-    | '/dev/json-formatter'
+    | '/visual/color-converter'
     | '/dev'
     | '/visual'
   id:
@@ -94,7 +94,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/tanstack-query'
     | '/dev/json-editor'
-    | '/dev/json-formatter'
+    | '/visual/color-converter'
     | '/dev/'
     | '/visual/'
   fileRoutesById: FileRoutesById
@@ -103,7 +103,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   DevJsonEditorRoute: typeof DevJsonEditorRoute
-  DevJsonFormatterRoute: typeof DevJsonFormatterRoute
+  VisualColorConverterRoute: typeof VisualColorConverterRoute
   DevIndexRoute: typeof DevIndexRoute
   VisualIndexRoute: typeof VisualIndexRoute
 }
@@ -131,11 +131,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DevIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/dev/json-formatter': {
-      id: '/dev/json-formatter'
-      path: '/dev/json-formatter'
-      fullPath: '/dev/json-formatter'
-      preLoaderRoute: typeof DevJsonFormatterRouteImport
+    '/visual/color-converter': {
+      id: '/visual/color-converter'
+      path: '/visual/color-converter'
+      fullPath: '/visual/color-converter'
+      preLoaderRoute: typeof VisualColorConverterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dev/json-editor': {
@@ -159,7 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   DevJsonEditorRoute: DevJsonEditorRoute,
-  DevJsonFormatterRoute: DevJsonFormatterRoute,
+  VisualColorConverterRoute: VisualColorConverterRoute,
   DevIndexRoute: DevIndexRoute,
   VisualIndexRoute: VisualIndexRoute,
 }
