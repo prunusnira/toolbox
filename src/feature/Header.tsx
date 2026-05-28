@@ -8,14 +8,17 @@ export default function Header() {
 
   return (
     <header className="p-[10px] h-[50px] flex gap-[4px] bg-white text-black justify-between">
-      <nav className="flex flex-row">
+      <nav className="flex flex-row items-center">
         {menuData.map((item) => (
           <div key={item.id} className="px-[4px] font-bold">
-            <Link 
-              to={item.path || '#'} 
+            <Link
+              to={item.path || '#'}
               onClick={() => setSelectedMenu(item)}
-              className="[&.active]:font-bold"
+              className="[&.active]:font-bold flex items-center gap-1"
             >
+              {item.id === 'home' && (
+                <img src="/logo.png" alt="logo" className="h-6 w-6" />
+              )}
               {item.name}
             </Link>
           </div>

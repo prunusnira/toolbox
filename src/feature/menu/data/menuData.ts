@@ -8,7 +8,7 @@ export interface MenuType {
 export const menuData: MenuType[] = [
   {
     id: 'home',
-    name: 'Home',
+    name: "Nira's Toolbox",
     path: '/',
   },
   {
