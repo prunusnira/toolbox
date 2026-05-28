@@ -1,8 +1,12 @@
 import { useCallback, useState } from 'react'
 import { useAtomValue } from 'jotai'
+import { languageAtom } from '@/i18n/languageAtom.ts'
+import { jsonEditorTranslations } from '../../i18n/translations.ts'
 import { jsonRootAtom, viewModeAtom, jsonTextAtom, treeToJsonString } from '@/feature/dev/json-editor/data/Json.ts'
 
 export const JsonVisualDisplay = () => {
+  const lang = useAtomValue(languageAtom)
+  const t = jsonEditorTranslations[lang]
   const root = useAtomValue(jsonRootAtom)
   const viewMode = useAtomValue(viewModeAtom)
   const jsonText = useAtomValue(jsonTextAtom)
@@ -77,7 +81,7 @@ export const JsonVisualDisplay = () => {
       {/* Header */}
       <div className="flex items-center justify-between px-3 py-2 bg-gray-50 border-b border-gray-200">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold text-gray-600">📄 JSON 출력</span>
+          <span className="text-xs font-semibold text-gray-600">{t.jsonOutput}</span>
           <div className="flex rounded overflow-hidden border border-gray-300">
             <button
               onClick={() => setViewFormat('pretty')}
@@ -111,13 +115,13 @@ export const JsonVisualDisplay = () => {
                 : 'bg-white border-gray-300 text-gray-600 hover:bg-gray-100'
             }`}
           >
-            {copied ? '✓ 복사됨' : '📋 복사'}
+            {copied ? t.copied : t.copy}
           </button>
           <button
             onClick={handleDownload}
             className="px-2.5 py-1 text-xs font-medium text-gray-600 bg-white rounded border border-gray-300 hover:bg-gray-100 transition-colors"
           >
-            💾 다운로드
+            {t.download}
           </button>
         </div>
       </div>
@@ -132,10 +136,10 @@ export const JsonVisualDisplay = () => {
       {/* Status bar */}
       <div className="flex items-center justify-between px-3 py-1.5 bg-gray-100 border-t border-gray-200 text-xs text-gray-500">
         <span>
-          {displayJson.length.toLocaleString()} 글자 · {(new TextEncoder().encode(displayJson).length / 1024).toFixed(1)} KB
+          {displayJson.length.toLocaleString()} {t.chars} · {(new TextEncoder().encode(displayJson).length / 1024).toFixed(1)} KB
         </span>
         <span>
-          Root: {root.type === 'object' ? 'Object' : 'Array'} · 항목: {root.children.length}개
+          Root: {root.type === 'object' ? 'Object' : 'Array'} · {t.rootItems}: {root.children.length}
         </span>
       </div>
     </section>

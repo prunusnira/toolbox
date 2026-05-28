@@ -10,7 +10,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-1 overflow-hidden">
       <SideMenu />
-      <main className="flex-1 p-4 overflow-y-auto">
+      <main className="flex-1 p-4 overflow-y-auto bg-white dark:bg-gray-900">
         {children}
       </main>
     </div>

@@ -1,37 +1,41 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { useAtomValue } from 'jotai'
+import { translationAtom } from '../i18n/languageAtom.ts'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
 })
 
-const features = [
-  {
-    category: 'Dev Tools',
-    description: '개발 생산성을 높여주는 유틸리티 모음',
-    icon: '🛠️',
-    items: [
-      {
-        name: 'JSON Editor',
-        path: '/dev/json-editor',
-        description: 'JSON 데이터를 시각적으로 편집하고 확인할 수 있는 에디터',
-      },
-    ],
-  },
-  {
-    category: 'Visual Tools',
-    description: '색상 및 시각적 요소를 다루는 도구 모음',
-    icon: '🎨',
-    items: [
-      {
-        name: 'Color Converter',
-        path: '/visual/color-converter',
-        description: 'RGB, RGBA, HSV 등 다양한 색상 형식을 변환하는 도구',
-      },
-    ],
-  },
-]
-
 function HomePage() {
+  const t = useAtomValue(translationAtom);
+
+  const features = [
+    {
+      category: t.home.devTools,
+      description: t.home.devToolsDesc,
+      icon: '🛠️',
+      items: [
+        {
+          name: t.home.jsonEditor,
+          path: '/dev/json-editor',
+          description: t.home.jsonEditorDesc,
+        },
+      ],
+    },
+    {
+      category: t.home.visualTools,
+      description: t.home.visualToolsDesc,
+      icon: '🎨',
+      items: [
+        {
+          name: t.home.colorConverter,
+          path: '/visual/color-converter',
+          description: t.home.colorConverterDesc,
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="max-w-4xl mx-auto py-12 px-4">
       {/* Hero Section */}
@@ -39,12 +43,11 @@ function HomePage() {
         <div className="flex items-center justify-center gap-3 mb-4">
           <img src="/logo.png" alt="logo" className="h-16 w-16" />
           <h1 className="text-4xl font-bold text-gray-900">
-            Nira's Toolbox
+            {t.menu.home}
           </h1>
         </div>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          다양한 작업을 간편하게 처리할 수 있도록 도와주는 도구와 유틸리티 모음입니다.
-          생산성을 높이고 효율적인 워크플로우를 경험해 보세요.
+          {t.home.description}
         </p>
       </div>
 
@@ -81,7 +84,7 @@ function HomePage() {
 
       {/* Footer */}
       <div className="mt-16 text-center text-sm text-gray-400">
-        <p>https://tools.nira.one</p>
+        <p>{t.home.footer}</p>
       </div>
     </div>
   )

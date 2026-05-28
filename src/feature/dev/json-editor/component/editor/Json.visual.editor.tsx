@@ -1,5 +1,8 @@
 import { useCallback, useRef, useState } from 'react'
 import { useAtom } from 'jotai'
+import { useAtomValue } from 'jotai'
+import { languageAtom } from '@/i18n/languageAtom.ts'
+import { jsonEditorTranslations } from '../../i18n/translations.ts'
 import {
   jsonRootAtom,
   jsonErrorAtom,
@@ -15,6 +18,8 @@ import {
 import { JsonNodeEditor } from '@/feature/dev/json-editor/component/editor/Json.item.tsx'
 
 export const JsonVisualEditor = () => {
+  const lang = useAtomValue(languageAtom)
+  const t = jsonEditorTranslations[lang]
   const [root, setRoot] = useAtom(jsonRootAtom)
   const [error, setError] = useAtom(jsonErrorAtom)
   const [viewMode, setViewMode] = useAtom(viewModeAtom)
@@ -22,12 +27,10 @@ export const JsonVisualEditor = () => {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [dragOver, setDragOver] = useState(false)
 
-  // Handle node changes from the tree editor
   const handleChange = useCallback(
     (path: TreePath, updater: (node: typeof root) => typeof root) => {
       setRoot((prev) => {
         if (path.length === 0) {
-          // Direct update on root
           return updater(prev)
         }
         return updateNodeInTree(prev, path, updater)
@@ -43,7 +46,6 @@ export const JsonVisualEditor = () => {
     [setRoot],
   )
 
-  // Switch root type
   const handleRootTypeChange = useCallback(
     (type: 'object' | 'array') => {
       setRoot((prev) => ({
@@ -55,7 +57,6 @@ export const JsonVisualEditor = () => {
     [setRoot],
   )
 
-  // Switch to GUI mode
   const switchToGui = useCallback(() => {
     if (viewMode === 'text') {
       const parsed = parseJsonToTree(jsonText)
@@ -63,14 +64,13 @@ export const JsonVisualEditor = () => {
         setRoot(parsed)
         setError('')
       } else {
-        setError('JSON 파싱 에러: 올바른 JSON 형식이 아닙니다.')
+        setError(t.parseError)
         return
       }
     }
     setViewMode('gui')
-  }, [viewMode, jsonText, setRoot, setError, setViewMode])
+  }, [viewMode, jsonText, setRoot, setError, setViewMode, t])
 
-  // Switch to text mode
   const switchToText = useCallback(() => {
     const text = treeToJsonString(root)
     setJsonText(text)
@@ -78,22 +78,19 @@ export const JsonVisualEditor = () => {
     setError('')
   }, [root, setJsonText, setViewMode, setError])
 
-  // Handle text change
   const handleTextChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setJsonText(e.target.value)
-      // Validate JSON
       try {
         JSON.parse(e.target.value)
         setError('')
       } catch (err) {
-        setError(`JSON 에러: ${(err as Error).message}`)
+        setError(`${t.jsonError} ${(err as Error).message}`)
       }
     },
-    [setJsonText, setError],
+    [setJsonText, setError, t],
   )
 
-  // New JSON
   const handleNew = useCallback(
     (type: 'object' | 'array' = 'object') => {
       setRoot(createRootNode(type))
@@ -103,7 +100,6 @@ export const JsonVisualEditor = () => {
     [setRoot, setJsonText, setError],
   )
 
-  // File upload
   const handleFileUpload = useCallback(
     (file: File) => {
       const reader = new FileReader()
@@ -116,12 +112,12 @@ export const JsonVisualEditor = () => {
           setError('')
           setViewMode('gui')
         } else {
-          setError('파일을 JSON으로 파싱할 수 없습니다.')
+          setError(t.fileParseError)
         }
       }
       reader.readAsText(file)
     },
-    [setRoot, setJsonText, setError, setViewMode],
+    [setRoot, setJsonText, setError, setViewMode, t],
   )
 
   const handleFileInputChange = useCallback(
@@ -130,7 +126,6 @@ export const JsonVisualEditor = () => {
       if (file) {
         handleFileUpload(file)
       }
-      // Reset input
       if (fileInputRef.current) {
         fileInputRef.current.value = ''
       }
@@ -138,7 +133,6 @@ export const JsonVisualEditor = () => {
     [handleFileUpload],
   )
 
-  // Drag & drop
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault()
     setDragOver(true)
@@ -174,7 +168,7 @@ export const JsonVisualEditor = () => {
                 : 'bg-white text-gray-600 hover:bg-gray-100'
             }`}
           >
-            🖊 GUI 편집
+            {t.guiEdit}
           </button>
           <button
             onClick={switchToText}
@@ -184,7 +178,7 @@ export const JsonVisualEditor = () => {
                 : 'bg-white text-gray-600 hover:bg-gray-100'
             }`}
           >
-            📝 텍스트 편집
+            {t.textEdit}
           </button>
         </div>
 
@@ -194,16 +188,16 @@ export const JsonVisualEditor = () => {
         <button
           onClick={() => handleNew('object')}
           className="px-2.5 py-1 text-xs font-medium text-gray-600 bg-white rounded border border-gray-300 hover:bg-gray-100 transition-colors"
-          title="새 Object"
+          title={t.newObject}
         >
-          + Object
+          {t.newObject}
         </button>
         <button
           onClick={() => handleNew('array')}
           className="px-2.5 py-1 text-xs font-medium text-gray-600 bg-white rounded border border-gray-300 hover:bg-gray-100 transition-colors"
-          title="새 Array"
+          title={t.newArray}
         >
-          + Array
+          {t.newArray}
         </button>
 
         <div className="h-4 w-px bg-gray-300" />
@@ -212,9 +206,9 @@ export const JsonVisualEditor = () => {
         <button
           onClick={() => fileInputRef.current?.click()}
           className="px-2.5 py-1 text-xs font-medium text-gray-600 bg-white rounded border border-gray-300 hover:bg-gray-100 transition-colors"
-          title="JSON 파일 불러오기"
+          title={t.openFile}
         >
-          📂 파일 열기
+          {t.openFile}
         </button>
         <input
           ref={fileInputRef}
@@ -239,7 +233,7 @@ export const JsonVisualEditor = () => {
       >
         {dragOver && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-blue-50/80">
-            <p className="text-blue-600 text-lg font-medium">JSON 파일을 여기에 드롭하세요</p>
+            <p className="text-blue-600 text-lg font-medium">{t.dropFile}</p>
           </div>
         )}
 
@@ -247,7 +241,7 @@ export const JsonVisualEditor = () => {
           <div>
             {/* Root type selector */}
             <div className="flex items-center gap-2 mb-3 pb-2 border-b border-gray-100">
-              <span className="text-xs font-semibold text-gray-500">Root 타입:</span>
+              <span className="text-xs font-semibold text-gray-500">{t.rootType}</span>
               <select
                 value={root.type}
                 onChange={(e) => handleRootTypeChange(e.target.value as 'object' | 'array')}
@@ -257,7 +251,7 @@ export const JsonVisualEditor = () => {
                 <option value="array">Array []</option>
               </select>
               <span className="text-xs text-gray-400">
-                {root.type === 'object' ? '키-값 쌍 구조' : '순서가 있는 목록'}
+                {root.type === 'object' ? t.keyValueStructure : t.orderedList}
               </span>
             </div>
 
@@ -270,12 +264,9 @@ export const JsonVisualEditor = () => {
               </div>
               {root.children.length === 0 && (
                 <p className="text-xs text-gray-400 italic py-2 px-4">
-                  {root.type === 'object'
-                    ? '아래 "+ 추가" 버튼으로 첫 항목을 추가하세요'
-                    : '아래 "+ 추가" 버튼으로 첫 항목을 추가하세요'}
+                  {t.addFirstItem}
                 </p>
               )}
-              {/* Render root children directly */}
               {root.children.map((child) => (
                 <JsonNodeEditor
                   key={child.id}
@@ -293,7 +284,7 @@ export const JsonVisualEditor = () => {
           <textarea
             value={jsonText}
             onChange={handleTextChange}
-            placeholder="여기에 JSON을 붙여넣으세요..."
+            placeholder={t.pasteJson}
             spellCheck={false}
             className="w-full h-full min-h-[400px] p-2 font-mono text-sm bg-gray-50 border border-gray-200 rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
           />

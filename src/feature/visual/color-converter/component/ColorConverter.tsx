@@ -1,20 +1,23 @@
 import { useState, useCallback, useEffect } from 'react'
+import { useAtomValue } from 'jotai'
+import { languageAtom } from '@/i18n/languageAtom.ts'
+import { colorConverterTranslations } from '../i18n/translations.ts'
 import type { RGB, RGBA, HSV, HSL } from '@/feature/visual/color-converter/data/ColorConverter.ts'
 import {
   rgbToHex,
   hexToRgb,
-  rgbaToRgb,
-  rgbaToRgbWithBackground,
-  rgbToRgbaForBackground,
   rgbToHsv,
   hsvToRgb,
   rgbToHsl,
   hslToRgb,
   rgbaToHex,
+  rgbaToRgb,
   rgbToCssString,
   rgbaToCssString,
   hslToCssString,
   hsvToCssString,
+  rgbaToRgbWithBackground,
+  rgbToRgbaForBackground,
 } from '@/feature/visual/color-converter/data/ColorConverter.ts'
 
 // ===== Reusable Input Component =====
@@ -112,6 +115,9 @@ const FormatCard = ({
 
 // ===== Main Component =====
 export const ColorConverter = () => {
+  const lang = useAtomValue(languageAtom)
+  const t = colorConverterTranslations[lang]
+
   // Primary color state (RGB is the source of truth)
   const [rgb, setRgb] = useState<RGB>({ r: 66, g: 135, b: 245 })
   const [alpha, setAlpha] = useState<number>(1)
@@ -205,7 +211,7 @@ export const ColorConverter = () => {
         {/* Color Preview */}
         <div className="border border-gray-200 rounded-lg overflow-hidden">
           <div className="px-3 py-2 bg-gray-50 border-b border-gray-100">
-            <h3 className="text-sm font-semibold text-gray-700">🎨 색상 미리보기</h3>
+            <h3 className="text-sm font-semibold text-gray-700">{t.colorPreview}</h3>
           </div>
           <div className="p-3 space-y-3">
             {/* Color picker input */}
@@ -234,7 +240,7 @@ export const ColorConverter = () => {
             {/* Alpha slider */}
             <div className="space-y-1">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-gray-500">투명도 (Alpha)</span>
+                <span className="text-xs font-semibold text-gray-500">{t.alpha}</span>
                 <span className="text-xs text-gray-600 font-mono">
                   {alpha.toFixed(2)} ({Math.round(alpha * 100)}%)
                 </span>
@@ -355,7 +361,7 @@ export const ColorConverter = () => {
         {/* Background Color */}
         <div className="border border-gray-200 rounded-lg overflow-hidden">
           <div className="px-3 py-2 bg-gray-50 border-b border-gray-100">
-            <h3 className="text-sm font-semibold text-gray-700">🔲 배경 색상</h3>
+            <h3 className="text-sm font-semibold text-gray-700">{t.backgroundColor}</h3>
           </div>
           <div className="p-3 space-y-2">
             <div className="flex items-center gap-2">
@@ -386,9 +392,9 @@ export const ColorConverter = () => {
         {/* RGBA → RGB (Alpha Compositing Result) */}
         <div className="border-2 border-blue-200 rounded-lg overflow-hidden bg-blue-50/30">
           <div className="px-3 py-2 bg-blue-50 border-b border-blue-100">
-            <h3 className="text-sm font-semibold text-blue-800">➡️ RGBA → 배경 위 실제 색상</h3>
+            <h3 className="text-sm font-semibold text-blue-800">{t.rgbaToRgb}</h3>
             <p className="text-xs text-blue-600 mt-0.5">
-              RGBA 색상이 배경 위에서 실제로 보이는 RGB 색상
+              {t.rgbaToRgbDesc}
             </p>
           </div>
           <div className="p-3 space-y-3">
@@ -398,7 +404,7 @@ export const ColorConverter = () => {
               <div className="flex-1 rounded border border-gray-200 flex items-center justify-center text-xs text-gray-500"
                 style={{ backgroundColor: rgbToCssString(bgColor) }}
               >
-                배경
+                {t.background}
               </div>
               {/* RGBA on background */}
               <div className="flex-1 rounded border border-gray-200 flex flex-col items-center justify-center"
@@ -416,14 +422,14 @@ export const ColorConverter = () => {
 
             <div className="bg-white rounded-lg p-2 border border-blue-100">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-gray-600">결과 RGB:</span>
+                <span className="text-xs font-semibold text-gray-600">{t.resultRgb}</span>
                 <div className="flex items-center gap-1">
                   <code className="text-xs font-mono text-blue-800">{rgbToCssString(composited)}</code>
                   <CopyButton text={rgbToCssString(composited)} />
                 </div>
               </div>
               <div className="flex items-center justify-between mt-1">
-                <span className="text-xs font-semibold text-gray-600">결과 HEX:</span>
+                <span className="text-xs font-semibold text-gray-600">{t.resultHex}</span>
                 <div className="flex items-center gap-1">
                   <code className="text-xs font-mono text-blue-800">{compositedHex.toUpperCase()}</code>
                   <CopyButton text={compositedHex.toUpperCase()} />
@@ -432,7 +438,7 @@ export const ColorConverter = () => {
             </div>
 
             <div className="text-xs text-gray-500 bg-gray-50 rounded p-2">
-              <strong>공식:</strong> result = fg × α + bg × (1 - α)<br />
+              <strong>{t.formula}</strong> result = fg × α + bg × (1 - α)<br />
               R: {rgb.r} × {alpha.toFixed(2)} + {bgColor.r} × {(1 - alpha).toFixed(2)} = <strong>{composited.r}</strong><br />
               G: {rgb.g} × {alpha.toFixed(2)} + {bgColor.g} × {(1 - alpha).toFixed(2)} = <strong>{composited.g}</strong><br />
               B: {rgb.b} × {alpha.toFixed(2)} + {bgColor.b} × {(1 - alpha).toFixed(2)} = <strong>{composited.b}</strong>
@@ -443,16 +449,16 @@ export const ColorConverter = () => {
         {/* RGB → RGBA (Reverse Compositing) */}
         <div className="border-2 border-green-200 rounded-lg overflow-hidden bg-green-50/30">
           <div className="px-3 py-2 bg-green-50 border-b border-green-100">
-            <h3 className="text-sm font-semibold text-green-800">⬅️ 목표 색상 → RGBA (역산)</h3>
+            <h3 className="text-sm font-semibold text-green-800">{t.reverseTitle}</h3>
             <p className="text-xs text-green-600 mt-0.5">
-              배경 위에서 목표 색상을 만들기 위한 전경 RGBA 계산
+              {t.reverseDesc}
             </p>
           </div>
           <div className="p-3 space-y-3">
             {/* Target color input */}
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold text-gray-600 w-16">목표 색상:</span>
+                <span className="text-xs font-semibold text-gray-600 w-16">{t.targetColor}</span>
                 <input
                   type="color"
                   value={reverseTargetHex}
@@ -487,7 +493,7 @@ export const ColorConverter = () => {
                 className="flex-1 rounded border border-gray-200 flex items-center justify-center text-xs"
                 style={{ backgroundColor: rgbToCssString(bgColor) }}
               >
-                배경
+                {t.background}
               </div>
               <div
                 className="flex-1 rounded border border-gray-200"
@@ -513,14 +519,14 @@ export const ColorConverter = () => {
             {/* Result */}
             <div className="bg-white rounded-lg p-2 border border-green-100">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-gray-600">필요한 RGBA:</span>
+                <span className="text-xs font-semibold text-gray-600">{t.requiredRgba}</span>
                 <div className="flex items-center gap-1">
                   <code className="text-xs font-mono text-green-800">{rgbaToCssString(reverseRgba)}</code>
                   <CopyButton text={rgbaToCssString(reverseRgba)} />
                 </div>
               </div>
               <div className="flex items-center justify-between mt-1">
-                <span className="text-xs font-semibold text-gray-600">전경 HEX:</span>
+                <span className="text-xs font-semibold text-gray-600">{t.foregroundHex}</span>
                 <div className="flex items-center gap-1">
                   <div
                     className="w-4 h-4 rounded border border-gray-200"
@@ -535,12 +541,12 @@ export const ColorConverter = () => {
             </div>
 
             <div className="text-xs text-gray-500 bg-gray-50 rounded p-2">
-              <strong>공식:</strong> fg = (result - bg × (1 - α)) / α<br />
+              <strong>{t.formula}</strong> fg = (result - bg × (1 - α)) / α<br />
               R: ({reverseTarget.r} - {bgColor.r} × {(1 - reverseAlpha).toFixed(2)}) / {reverseAlpha.toFixed(2)} = <strong>{reverseRgba.r}</strong><br />
               G: ({reverseTarget.g} - {bgColor.g} × {(1 - reverseAlpha).toFixed(2)}) / {reverseAlpha.toFixed(2)} = <strong>{reverseRgba.g}</strong><br />
               B: ({reverseTarget.b} - {bgColor.b} × {(1 - reverseAlpha).toFixed(2)}) / {reverseAlpha.toFixed(2)} = <strong>{reverseRgba.b}</strong>
               {reverseAlpha === 0 && (
-                <p className="text-red-500 mt-1">⚠️ Alpha가 0이면 전경색이 결과에 영향을 주지 않습니다.</p>
+                <p className="text-red-500 mt-1">{t.alphaZeroWarning}</p>
               )}
             </div>
           </div>

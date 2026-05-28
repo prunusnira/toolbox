@@ -12,6 +12,13 @@
     <link rel="apple-touch-icon" href="/icon-192.png" />
     <link rel="manifest" href="/manifest.json" />
     <title>Create TanStack App - nira-toolbox</title>
+    <script>
+      (function() {
+        var theme = localStorage.getItem('toolbox-theme');
+        var isDark = theme === 'dark' || ((!theme || theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (isDark) document.documentElement.classList.add('dark');
+      })();
+    </script>
   </head>
   <body>
     <div id="app"></div>

@@ -1,4 +1,7 @@
 import { useState, useCallback } from 'react'
+import { useAtomValue } from 'jotai'
+import { languageAtom } from '@/i18n/languageAtom.ts'
+import { jsonEditorTranslations } from '../../i18n/translations.ts'
 import type { JsonNode, JsonNodeType, TreePath } from '@/feature/dev/json-editor/data/Json.ts'
 import {
   createDefaultNode,
@@ -27,6 +30,8 @@ type NodeEditorProps = {
 }
 
 export const JsonNodeEditor = ({ node, path, isRoot, parentType, onChange, onDelete }: NodeEditorProps) => {
+  const lang = useAtomValue(languageAtom)
+  const t = jsonEditorTranslations[lang]
   const [newChildType, setNewChildType] = useState<JsonNodeType>('string')
 
   const isContainer = node.type === 'object' || node.type === 'array'
@@ -110,7 +115,7 @@ export const JsonNodeEditor = ({ node, path, isRoot, parentType, onChange, onDel
           <button
             onClick={handleToggleExpand}
             className="flex-shrink-0 w-5 h-5 flex items-center justify-center rounded text-gray-500 hover:bg-gray-200 hover:text-gray-700 text-xs font-bold transition-colors"
-            title={node.expanded ? '접기' : '펼치기'}
+            title={node.expanded ? t.collapse : t.expand}
           >
             {node.expanded ? '▼' : '▶'}
           </button>
@@ -124,7 +129,7 @@ export const JsonNodeEditor = ({ node, path, isRoot, parentType, onChange, onDel
             type="text"
             value={node.key}
             onChange={(e) => handleKeyChange(e.target.value)}
-            placeholder="키 이름"
+            placeholder={t.keyName}
             className="flex-shrink-0 w-28 px-1.5 py-0.5 text-sm font-medium bg-blue-50 border border-blue-200 rounded focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400"
           />
         )}
@@ -135,9 +140,9 @@ export const JsonNodeEditor = ({ node, path, isRoot, parentType, onChange, onDel
           onChange={(e) => handleTypeChange(e.target.value as JsonNodeType)}
           className={`flex-shrink-0 px-1.5 py-0.5 text-xs font-semibold rounded border border-transparent cursor-pointer ${TYPE_COLORS[node.type]}`}
         >
-          {TYPE_OPTIONS.map((t) => (
-            <option key={t} value={t}>
-              {t}
+          {TYPE_OPTIONS.map((typeOpt) => (
+            <option key={typeOpt} value={typeOpt}>
+              {typeOpt}
             </option>
           ))}
         </select>
@@ -159,7 +164,7 @@ export const JsonNodeEditor = ({ node, path, isRoot, parentType, onChange, onDel
                 type={node.type === 'number' ? 'number' : 'text'}
                 value={node.value}
                 onChange={(e) => handleValueChange(e.target.value)}
-                placeholder={node.type === 'string' ? '문자열 값' : '숫자 값'}
+                placeholder={node.type === 'string' ? t.stringValue : t.numberValue}
                 className="flex-1 min-w-0 px-1.5 py-0.5 text-sm bg-white border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-blue-400"
               />
             )}
@@ -169,7 +174,7 @@ export const JsonNodeEditor = ({ node, path, isRoot, parentType, onChange, onDel
         {/* Container label */}
         {isContainer && (
           <span className="flex-1 text-xs text-gray-400 italic">
-            {node.type === 'object' ? `{ ${node.children.length}개 항목 }` : `[ ${node.children.length}개 항목 ]`}
+            {node.type === 'object' ? `{ ${node.children.length}${t.items} }` : `[ ${node.children.length}${t.items} ]`}
           </span>
         )}
 
@@ -178,7 +183,7 @@ export const JsonNodeEditor = ({ node, path, isRoot, parentType, onChange, onDel
           <button
             onClick={handleDelete}
             className="flex-shrink-0 opacity-0 group-hover:opacity-100 w-6 h-6 flex items-center justify-center rounded text-red-400 hover:bg-red-100 hover:text-red-600 text-sm transition-all"
-            title="삭제"
+            title={t.delete}
           >
             ✕
           </button>
@@ -206,18 +211,18 @@ export const JsonNodeEditor = ({ node, path, isRoot, parentType, onChange, onDel
             <button
               onClick={handleAddChild}
               className="px-2 py-0.5 text-xs font-medium text-blue-600 bg-blue-50 rounded hover:bg-blue-100 border border-blue-200 transition-colors"
-              title="항목 추가"
+              title={t.addItem}
             >
-              + 추가
+              + {t.addItem}
             </button>
             <select
               value={newChildType}
               onChange={(e) => setNewChildType(e.target.value as JsonNodeType)}
               className="px-1 py-0.5 text-xs rounded border border-gray-200 bg-white"
             >
-              {TYPE_OPTIONS.map((t) => (
-                <option key={t} value={t}>
-                  {t}
+              {TYPE_OPTIONS.map((typeOpt) => (
+                <option key={typeOpt} value={typeOpt}>
+                  {typeOpt}
                 </option>
               ))}
             </select>
