@@ -17,6 +17,7 @@ export const menuData: MenuType[] = [
     path: '/dev',
     children: [
         { id: 'dev-1', name: 'Dev Home', path: '/dev' },
+        { id: 'dev-2', name: 'Markdown Editor', path: '/dev/markdown-editor' },
         { id: 'dev-3', name: 'JSON Editor', path: '/dev/json-editor' },
     ]
   },

@@ -8,6 +8,8 @@ export interface HomeTranslations {
   visualToolsDesc: string;
   jsonEditor: string;
   jsonEditorDesc: string;
+  markdownEditor: string;
+  markdownEditorDesc: string;
   colorConverter: string;
   colorConverterDesc: string;
   footer: string;
@@ -23,6 +25,8 @@ export const homeTranslations: Record<Language, HomeTranslations> = {
     visualToolsDesc: 'Tools for working with colors and visual elements',
     jsonEditor: 'JSON Editor',
     jsonEditorDesc: 'A visual editor for viewing and editing JSON data',
+    markdownEditor: 'Markdown Editor',
+    markdownEditorDesc: 'A WYSIWYG editor for writing and previewing Markdown',
     colorConverter: 'Color Converter',
     colorConverterDesc: 'Convert between RGB, RGBA, HSV and other color formats',
     footer: 'https://tools.nira.one',
@@ -36,6 +40,8 @@ export const homeTranslations: Record<Language, HomeTranslations> = {
     visualToolsDesc: '색상 및 비주얼 요소를 다루는 도구 모음',
     jsonEditor: 'JSON 에디터',
     jsonEditorDesc: 'JSON 데이터를 시각적으로 편집하고 확인할 수 있는 에디터',
+    markdownEditor: '마크다운 에디터',
+    markdownEditorDesc: '마크다운을 작성하고 실시간 미리보기를 할 수 있는 위지윅 에디터',
     colorConverter: '색상 변환기',
     colorConverterDesc: 'RGB, RGBA, HSV 등 다양한 색상 형식을 변환하는 도구',
     footer: 'https://tools.nira.one',
@@ -49,6 +55,8 @@ export const homeTranslations: Record<Language, HomeTranslations> = {
     visualToolsDesc: '色や視覚要素を扱うツール集',
     jsonEditor: 'JSONエディタ',
     jsonEditorDesc: 'JSONデータを視覚的に編集・確認できるエディタ',
+    markdownEditor: 'Markdownエディタ',
+    markdownEditorDesc: 'Markdownを書いてリアルタイムプレビューできるWYSIWYGエディタ',
     colorConverter: 'カラーコンバーター',
     colorConverterDesc: 'RGB、RGBA、HSVなど様々なカラー形式を変換するツール',
     footer: 'https://tools.nira.one',
@@ -62,6 +70,8 @@ export const homeTranslations: Record<Language, HomeTranslations> = {
     visualToolsDesc: '处理颜色和视觉元素的工具集',
     jsonEditor: 'JSON编辑器',
     jsonEditorDesc: '可视化的JSON数据查看和编辑工具',
+    markdownEditor: 'Markdown编辑器',
+    markdownEditorDesc: '可实时预览的所见即所得Markdown编辑器',
     colorConverter: '颜色转换器',
     colorConverterDesc: '在RGB、RGBA、HSV等颜色格式之间进行转换',
     footer: 'https://tools.nira.one',
@@ -75,6 +85,8 @@ export const homeTranslations: Record<Language, HomeTranslations> = {
     visualToolsDesc: '處理顏色和視覺元素的工具集',
     jsonEditor: 'JSON編輯器',
     jsonEditorDesc: '視覺化的JSON資料檢視和編輯工具',
+    markdownEditor: 'Markdown編輯器',
+    markdownEditorDesc: '可即時預覽的所見即所得Markdown編輯器',
     colorConverter: '顏色轉換器',
     colorConverterDesc: '在RGB、RGBA、HSV等顏色格式之間進行轉換',
     footer: 'https://tools.nira.one',
@@ -88,6 +100,8 @@ export const homeTranslations: Record<Language, HomeTranslations> = {
     visualToolsDesc: 'Herramientas para trabajar con colores y elementos visuales',
     jsonEditor: 'Editor JSON',
     jsonEditorDesc: 'Un editor visual para ver y editar datos JSON',
+    markdownEditor: 'Editor Markdown',
+    markdownEditorDesc: 'Un editor WYSIWYG para escribir y previsualizar Markdown',
     colorConverter: 'Conversor de colores',
     colorConverterDesc: 'Convierte entre RGB, RGBA, HSV y otros formatos de color',
     footer: 'https://tools.nira.one',
@@ -101,6 +115,8 @@ export const homeTranslations: Record<Language, HomeTranslations> = {
     visualToolsDesc: 'Ferramentas para trabalhar com cores e elementos visuais',
     jsonEditor: 'Editor JSON',
     jsonEditorDesc: 'Um editor visual para visualizar e editar dados JSON',
+    markdownEditor: 'Editor Markdown',
+    markdownEditorDesc: 'Um editor WYSIWYG para escrever e visualizar Markdown',
     colorConverter: 'Conversor de Cores',
     colorConverterDesc: 'Converta entre RGB, RGBA, HSV e outros formatos de cor',
     footer: 'https://tools.nira.one',
@@ -114,6 +130,8 @@ export const homeTranslations: Record<Language, HomeTranslations> = {
     visualToolsDesc: 'Tools für die Arbeit mit Farben und visuellen Elementen',
     jsonEditor: 'JSON-Editor',
     jsonEditorDesc: 'Ein visueller Editor zum Anzeigen und Bearbeiten von JSON-Daten',
+    markdownEditor: 'Markdown-Editor',
+    markdownEditorDesc: 'Ein WYSIWYG-Editor zum Schreiben und Vorschauen von Markdown',
     colorConverter: 'Farbkonverter',
     colorConverterDesc: 'Konvertierung zwischen RGB, RGBA, HSV und anderen Farbformaten',
     footer: 'https://tools.nira.one',
@@ -127,6 +145,8 @@ export const homeTranslations: Record<Language, HomeTranslations> = {
     visualToolsDesc: 'Outils pour travailler avec les couleurs et les éléments visuels',
     jsonEditor: 'Éditeur JSON',
     jsonEditorDesc: 'Un éditeur visuel pour afficher et modifier les données JSON',
+    markdownEditor: 'Éditeur Markdown',
+    markdownEditorDesc: 'Un éditeur WYSIWYG pour écrire et prévisualiser du Markdown',
     colorConverter: 'Convertisseur de couleurs',
     colorConverterDesc: 'Convertir entre RGB, RGBA, HSV et autres formats de couleur',
     footer: 'https://tools.nira.one',

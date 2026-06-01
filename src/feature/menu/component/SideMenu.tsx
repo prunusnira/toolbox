@@ -17,6 +17,7 @@ const SideMenu = () => {
     dev: t.menu.dev,
     visual: t.menu.visual,
     'dev-1': t.menu.devHome,
+    'dev-2': t.menu.markdownEditor,
     'dev-3': t.menu.jsonEditor,
     'visual-0': t.menu.visualHome,
     'visual-1': t.menu.colorConverter,

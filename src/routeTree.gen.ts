@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as VisualIndexRouteImport } from './routes/visual/index'
 import { Route as DevIndexRouteImport } from './routes/dev/index'
 import { Route as VisualColorConverterRouteImport } from './routes/visual/color-converter'
+import { Route as DevMarkdownEditorRouteImport } from './routes/dev/markdown-editor'
 import { Route as DevJsonEditorRouteImport } from './routes/dev/json-editor'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo.tanstack-query'
 
@@ -36,6 +37,11 @@ const VisualColorConverterRoute = VisualColorConverterRouteImport.update({
   path: '/visual/color-converter',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DevMarkdownEditorRoute = DevMarkdownEditorRouteImport.update({
+  id: '/dev/markdown-editor',
+  path: '/dev/markdown-editor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DevJsonEditorRoute = DevJsonEditorRouteImport.update({
   id: '/dev/json-editor',
   path: '/dev/json-editor',
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/dev/json-editor': typeof DevJsonEditorRoute
+  '/dev/markdown-editor': typeof DevMarkdownEditorRoute
   '/visual/color-converter': typeof VisualColorConverterRoute
   '/dev': typeof DevIndexRoute
   '/visual': typeof VisualIndexRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/dev/json-editor': typeof DevJsonEditorRoute
+  '/dev/markdown-editor': typeof DevMarkdownEditorRoute
   '/visual/color-converter': typeof VisualColorConverterRoute
   '/dev': typeof DevIndexRoute
   '/visual': typeof VisualIndexRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/dev/json-editor': typeof DevJsonEditorRoute
+  '/dev/markdown-editor': typeof DevMarkdownEditorRoute
   '/visual/color-converter': typeof VisualColorConverterRoute
   '/dev/': typeof DevIndexRoute
   '/visual/': typeof VisualIndexRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/tanstack-query'
     | '/dev/json-editor'
+    | '/dev/markdown-editor'
     | '/visual/color-converter'
     | '/dev'
     | '/visual'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/tanstack-query'
     | '/dev/json-editor'
+    | '/dev/markdown-editor'
     | '/visual/color-converter'
     | '/dev'
     | '/visual'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/tanstack-query'
     | '/dev/json-editor'
+    | '/dev/markdown-editor'
     | '/visual/color-converter'
     | '/dev/'
     | '/visual/'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   DevJsonEditorRoute: typeof DevJsonEditorRoute
+  DevMarkdownEditorRoute: typeof DevMarkdownEditorRoute
   VisualColorConverterRoute: typeof VisualColorConverterRoute
   DevIndexRoute: typeof DevIndexRoute
   VisualIndexRoute: typeof VisualIndexRoute
@@ -138,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisualColorConverterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dev/markdown-editor': {
+      id: '/dev/markdown-editor'
+      path: '/dev/markdown-editor'
+      fullPath: '/dev/markdown-editor'
+      preLoaderRoute: typeof DevMarkdownEditorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dev/json-editor': {
       id: '/dev/json-editor'
       path: '/dev/json-editor'
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   DevJsonEditorRoute: DevJsonEditorRoute,
+  DevMarkdownEditorRoute: DevMarkdownEditorRoute,
   VisualColorConverterRoute: VisualColorConverterRoute,
   DevIndexRoute: DevIndexRoute,
   VisualIndexRoute: VisualIndexRoute,

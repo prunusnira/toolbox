@@ -20,6 +20,11 @@ function HomePage() {
           path: '/dev/json-editor',
           description: t.home.jsonEditorDesc,
         },
+        {
+          name: t.home.markdownEditor,
+          path: '/dev/markdown-editor',
+          description: t.home.markdownEditorDesc,
+        },
       ],
     },
     {

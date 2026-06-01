@@ -6,6 +6,7 @@ export interface MenuTranslations {
   visual: string;
   devHome: string;
   jsonEditor: string;
+  markdownEditor: string;
   visualHome: string;
   colorConverter: string;
 }
@@ -17,6 +18,7 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     visual: 'Visual',
     devHome: 'Dev Home',
     jsonEditor: 'JSON Editor',
+    markdownEditor: 'Markdown Editor',
     visualHome: 'Visual Home',
     colorConverter: 'Color Converter',
   },
@@ -26,6 +28,7 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     visual: '비주얼',
     devHome: '개발 홈',
     jsonEditor: 'JSON 에디터',
+    markdownEditor: '마크다운 에디터',
     visualHome: '비주얼 홈',
     colorConverter: '색상 변환기',
   },
@@ -35,6 +38,7 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     visual: 'ビジュアル',
     devHome: '開発ホーム',
     jsonEditor: 'JSONエディタ',
+    markdownEditor: 'Markdownエディタ',
     visualHome: 'ビジュアルホーム',
     colorConverter: 'カラーコンバーター',
   },
@@ -44,6 +48,7 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     visual: '视觉',
     devHome: '开发主页',
     jsonEditor: 'JSON编辑器',
+    markdownEditor: 'Markdown编辑器',
     visualHome: '视觉主页',
     colorConverter: '颜色转换器',
   },
@@ -53,6 +58,7 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     visual: '視覺',
     devHome: '開發首頁',
     jsonEditor: 'JSON編輯器',
+    markdownEditor: 'Markdown編輯器',
     visualHome: '視覺首頁',
     colorConverter: '顏色轉換器',
   },
@@ -62,6 +68,7 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     visual: 'Visual',
     devHome: 'Dev Inicio',
     jsonEditor: 'Editor JSON',
+    markdownEditor: 'Editor Markdown',
     visualHome: 'Visual Inicio',
     colorConverter: 'Conversor de colores',
   },
@@ -71,6 +78,7 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     visual: 'Visual',
     devHome: 'Dev Início',
     jsonEditor: 'Editor JSON',
+    markdownEditor: 'Editor Markdown',
     visualHome: 'Visual Início',
     colorConverter: 'Conversor de Cores',
   },
@@ -80,6 +88,7 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     visual: 'Visuell',
     devHome: 'Dev Startseite',
     jsonEditor: 'JSON-Editor',
+    markdownEditor: 'Markdown-Editor',
     visualHome: 'Visuelle Startseite',
     colorConverter: 'Farbkonverter',
   },
@@ -89,6 +98,7 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     visual: 'Visuel',
     devHome: 'Dev Accueil',
     jsonEditor: 'Éditeur JSON',
+    markdownEditor: 'Éditeur Markdown',
     visualHome: 'Visuel Accueil',
     colorConverter: 'Convertisseur de couleurs',
   },
