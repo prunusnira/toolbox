@@ -34,7 +34,7 @@ export default function Header() {
           </div>
         ))}
       </nav>
-      <div className="flex items-center gap-2">
+      <div className="hidden md:flex items-center gap-2">
         <ThemeToggle />
         <LanguageSwitcher />
       </div>

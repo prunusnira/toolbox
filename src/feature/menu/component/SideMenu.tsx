@@ -1,12 +1,15 @@
 import { useAtomValue, useSetAtom } from 'jotai'
-import { sideMenuItemsAtom, selectedMenuAtom } from '../data/menuAtoms.ts'
+import { sideMenuItemsAtom, selectedMenuAtom, sideMenuOpenAtom } from '../data/menuAtoms.ts'
 import { menuData } from '../data/menuData.ts'
 import { MenuItem } from '@/feature/menu/component/Menu.item.tsx'
 import { translationAtom } from '@/i18n/languageAtom.ts'
+import LanguageSwitcher from '@/i18n/LanguageSwitcher.tsx'
+import ThemeToggle from '@/theme/ThemeToggle.tsx'
 
 const SideMenu = () => {
   const sideMenuItems = useAtomValue(sideMenuItemsAtom)
   const setSelectedMenu = useSetAtom(selectedMenuAtom)
+  const setSideMenuOpen = useSetAtom(sideMenuOpenAtom)
   const t = useAtomValue(translationAtom)
 
   const isTopLevel = sideMenuItems.length === 0
@@ -36,14 +39,19 @@ const SideMenu = () => {
   }
 
   return (
-    <div className="w-64 bg-gray-100 dark:bg-gray-800 p-4">
+    <div className="h-full w-64 bg-gray-100 dark:bg-gray-800 p-4">
+      {/* Language & Theme toggle - mobile only, at top of menu */}
+      <div className="md:hidden flex items-center gap-2 mb-4 pb-3 border-b border-gray-200 dark:border-gray-700">
+        <ThemeToggle />
+        <LanguageSwitcher />
+      </div>
       <ul>
         {items.map((item) => (
           <MenuItem
             key={item.id}
             {...item}
             name={menuNameMap[item.id] || item.name}
-            onClick={isTopLevel ? () => setSelectedMenu(item) : undefined}
+            onClick={isTopLevel ? () => { setSelectedMenu(item); setSideMenuOpen(false) } : () => setSideMenuOpen(false)}
           />
         ))}
       </ul>

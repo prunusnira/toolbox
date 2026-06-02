@@ -4,6 +4,8 @@ import type { MenuType } from './menuData.ts';
 
 export const selectedMenuAtom = atom<MenuType | null>(null);
 
+export const sideMenuOpenAtom = atom(false);
+
 export const sideMenuItemsAtom = atom((get) => {
   const selectedMenu = get(selectedMenuAtom);
   return selectedMenu?.children || [];

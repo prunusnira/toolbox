@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { useSetAtom } from 'jotai'
-import { selectedMenuAtom } from '@/feature/menu/data/menuAtoms.ts'
+import { selectedMenuAtom, sideMenuOpenAtom } from '@/feature/menu/data/menuAtoms.ts'
 import { menuData } from '@/feature/menu/data/menuData.ts'
 
 export interface ToolItem {
@@ -27,6 +27,7 @@ function findParentMenu(path: string) {
 
 export function ToolListSection({ icon, title, description, tools }: ToolListSectionProps) {
   const setSelectedMenu = useSetAtom(selectedMenuAtom)
+  const setSideMenuOpen = useSetAtom(sideMenuOpenAtom)
 
   return (
     <div>
@@ -40,7 +41,7 @@ export function ToolListSection({ icon, title, description, tools }: ToolListSec
           <Link
             key={tool.id}
             to={tool.path}
-            onClick={() => setSelectedMenu(findParentMenu(tool.path))}
+            onClick={() => { setSelectedMenu(findParentMenu(tool.path)); setSideMenuOpen(false) }}
             className="block rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:border-blue-300"
           >
             <h3 className="text-lg font-medium text-blue-600 mb-1">
