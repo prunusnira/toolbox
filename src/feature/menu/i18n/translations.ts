@@ -1,14 +1,26 @@
-import type { Language } from '@/i18n/types';
+import type { Language } from '@/i18n/types'
 
 export interface MenuTranslations {
-  home: string;
-  dev: string;
-  visual: string;
-  devHome: string;
-  jsonEditor: string;
-  markdownEditor: string;
-  visualHome: string;
-  colorConverter: string;
+  home: string
+  dev: string
+  visual: string
+  devHome: string
+  jsonEditor: string
+  markdownEditor: string
+  regexPlayground: string
+  jwtDecoder: string
+  urlEncoderDecoder: string
+  timestampConverter: string
+  diffViewer: string
+  jsonYamlConverter: string
+  emptyLineCleaner: string
+  visualHome: string
+  colorConverter: string
+  cssGradientBuilder: string
+  boxShadowGenerator: string
+  borderRadiusGenerator: string
+  svgOptimizerPreviewer: string
+  paletteGenerator: string
 }
 
 export const menuTranslations: Record<Language, MenuTranslations> = {
@@ -19,8 +31,20 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     devHome: 'Dev Home',
     jsonEditor: 'JSON Editor',
     markdownEditor: 'Markdown Editor',
+    regexPlayground: 'Regex Playground',
+    jwtDecoder: 'JWT Decoder',
+    urlEncoderDecoder: 'URL Encoder / Decoder',
+    timestampConverter: 'Timestamp Converter',
+    diffViewer: 'Diff Viewer',
+    jsonYamlConverter: 'JSON YAML Converter',
+    emptyLineCleaner: 'Empty Line Cleaner',
     visualHome: 'Visual Home',
     colorConverter: 'Color Converter',
+    cssGradientBuilder: 'CSS Gradient Builder',
+    boxShadowGenerator: 'Box Shadow Generator',
+    borderRadiusGenerator: 'Border Radius Generator',
+    svgOptimizerPreviewer: 'SVG Optimizer / Previewer',
+    paletteGenerator: 'Palette Generator',
   },
   ko: {
     home: "Nira's Toolbox",
@@ -29,8 +53,20 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     devHome: '개발 홈',
     jsonEditor: 'JSON 에디터',
     markdownEditor: '마크다운 에디터',
+    regexPlayground: '정규식 플레이그라운드',
+    jwtDecoder: 'JWT 디코더',
+    urlEncoderDecoder: 'URL 인코더 / 디코더',
+    timestampConverter: '타임스탬프 변환기',
+    diffViewer: 'Diff 뷰어',
+    jsonYamlConverter: 'JSON YAML 변환기',
+    emptyLineCleaner: '빈 줄 정리기',
     visualHome: '비주얼 홈',
     colorConverter: '색상 변환기',
+    cssGradientBuilder: 'CSS 그라디언트 빌더',
+    boxShadowGenerator: '박스 섀도 생성기',
+    borderRadiusGenerator: '둥근 모서리 생성기',
+    svgOptimizerPreviewer: 'SVG 최적화 / 미리보기',
+    paletteGenerator: '팔레트 생성기',
   },
   ja: {
     home: "Nira's Toolbox",
@@ -39,8 +75,20 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     devHome: '開発ホーム',
     jsonEditor: 'JSONエディタ',
     markdownEditor: 'Markdownエディタ',
+    regexPlayground: 'Regex Playground',
+    jwtDecoder: 'JWT Decoder',
+    urlEncoderDecoder: 'URL Encoder / Decoder',
+    timestampConverter: 'Timestamp Converter',
+    diffViewer: 'Diff Viewer',
+    jsonYamlConverter: 'JSON YAML Converter',
+    emptyLineCleaner: 'Empty Line Cleaner',
     visualHome: 'ビジュアルホーム',
     colorConverter: 'カラーコンバーター',
+    cssGradientBuilder: 'CSS Gradient Builder',
+    boxShadowGenerator: 'Box Shadow Generator',
+    borderRadiusGenerator: 'Border Radius Generator',
+    svgOptimizerPreviewer: 'SVG Optimizer / Previewer',
+    paletteGenerator: 'Palette Generator',
   },
   'zh-Hans': {
     home: "Nira's Toolbox",
@@ -49,8 +97,20 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     devHome: '开发主页',
     jsonEditor: 'JSON编辑器',
     markdownEditor: 'Markdown编辑器',
+    regexPlayground: 'Regex Playground',
+    jwtDecoder: 'JWT Decoder',
+    urlEncoderDecoder: 'URL Encoder / Decoder',
+    timestampConverter: 'Timestamp Converter',
+    diffViewer: 'Diff Viewer',
+    jsonYamlConverter: 'JSON YAML Converter',
+    emptyLineCleaner: 'Empty Line Cleaner',
     visualHome: '视觉主页',
     colorConverter: '颜色转换器',
+    cssGradientBuilder: 'CSS Gradient Builder',
+    boxShadowGenerator: 'Box Shadow Generator',
+    borderRadiusGenerator: 'Border Radius Generator',
+    svgOptimizerPreviewer: 'SVG Optimizer / Previewer',
+    paletteGenerator: 'Palette Generator',
   },
   'zh-Hant': {
     home: "Nira's Toolbox",
@@ -59,8 +119,20 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     devHome: '開發首頁',
     jsonEditor: 'JSON編輯器',
     markdownEditor: 'Markdown編輯器',
+    regexPlayground: 'Regex Playground',
+    jwtDecoder: 'JWT Decoder',
+    urlEncoderDecoder: 'URL Encoder / Decoder',
+    timestampConverter: 'Timestamp Converter',
+    diffViewer: 'Diff Viewer',
+    jsonYamlConverter: 'JSON YAML Converter',
+    emptyLineCleaner: 'Empty Line Cleaner',
     visualHome: '視覺首頁',
     colorConverter: '顏色轉換器',
+    cssGradientBuilder: 'CSS Gradient Builder',
+    boxShadowGenerator: 'Box Shadow Generator',
+    borderRadiusGenerator: 'Border Radius Generator',
+    svgOptimizerPreviewer: 'SVG Optimizer / Previewer',
+    paletteGenerator: 'Palette Generator',
   },
   es: {
     home: "Nira's Toolbox",
@@ -69,8 +141,20 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     devHome: 'Dev Inicio',
     jsonEditor: 'Editor JSON',
     markdownEditor: 'Editor Markdown',
+    regexPlayground: 'Regex Playground',
+    jwtDecoder: 'JWT Decoder',
+    urlEncoderDecoder: 'URL Encoder / Decoder',
+    timestampConverter: 'Timestamp Converter',
+    diffViewer: 'Diff Viewer',
+    jsonYamlConverter: 'JSON YAML Converter',
+    emptyLineCleaner: 'Empty Line Cleaner',
     visualHome: 'Visual Inicio',
     colorConverter: 'Conversor de colores',
+    cssGradientBuilder: 'CSS Gradient Builder',
+    boxShadowGenerator: 'Box Shadow Generator',
+    borderRadiusGenerator: 'Border Radius Generator',
+    svgOptimizerPreviewer: 'SVG Optimizer / Previewer',
+    paletteGenerator: 'Palette Generator',
   },
   pt: {
     home: "Nira's Toolbox",
@@ -79,8 +163,20 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     devHome: 'Dev Início',
     jsonEditor: 'Editor JSON',
     markdownEditor: 'Editor Markdown',
+    regexPlayground: 'Regex Playground',
+    jwtDecoder: 'JWT Decoder',
+    urlEncoderDecoder: 'URL Encoder / Decoder',
+    timestampConverter: 'Timestamp Converter',
+    diffViewer: 'Diff Viewer',
+    jsonYamlConverter: 'JSON YAML Converter',
+    emptyLineCleaner: 'Empty Line Cleaner',
     visualHome: 'Visual Início',
     colorConverter: 'Conversor de Cores',
+    cssGradientBuilder: 'CSS Gradient Builder',
+    boxShadowGenerator: 'Box Shadow Generator',
+    borderRadiusGenerator: 'Border Radius Generator',
+    svgOptimizerPreviewer: 'SVG Optimizer / Previewer',
+    paletteGenerator: 'Palette Generator',
   },
   de: {
     home: "Nira's Toolbox",
@@ -89,8 +185,20 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     devHome: 'Dev Startseite',
     jsonEditor: 'JSON-Editor',
     markdownEditor: 'Markdown-Editor',
+    regexPlayground: 'Regex Playground',
+    jwtDecoder: 'JWT Decoder',
+    urlEncoderDecoder: 'URL Encoder / Decoder',
+    timestampConverter: 'Timestamp Converter',
+    diffViewer: 'Diff Viewer',
+    jsonYamlConverter: 'JSON YAML Converter',
+    emptyLineCleaner: 'Empty Line Cleaner',
     visualHome: 'Visuelle Startseite',
     colorConverter: 'Farbkonverter',
+    cssGradientBuilder: 'CSS Gradient Builder',
+    boxShadowGenerator: 'Box Shadow Generator',
+    borderRadiusGenerator: 'Border Radius Generator',
+    svgOptimizerPreviewer: 'SVG Optimizer / Previewer',
+    paletteGenerator: 'Palette Generator',
   },
   fr: {
     home: "Nira's Toolbox",
@@ -99,7 +207,19 @@ export const menuTranslations: Record<Language, MenuTranslations> = {
     devHome: 'Dev Accueil',
     jsonEditor: 'Éditeur JSON',
     markdownEditor: 'Éditeur Markdown',
+    regexPlayground: 'Regex Playground',
+    jwtDecoder: 'JWT Decoder',
+    urlEncoderDecoder: 'URL Encoder / Decoder',
+    timestampConverter: 'Timestamp Converter',
+    diffViewer: 'Diff Viewer',
+    jsonYamlConverter: 'JSON YAML Converter',
+    emptyLineCleaner: 'Empty Line Cleaner',
     visualHome: 'Visuel Accueil',
     colorConverter: 'Convertisseur de couleurs',
+    cssGradientBuilder: 'CSS Gradient Builder',
+    boxShadowGenerator: 'Box Shadow Generator',
+    borderRadiusGenerator: 'Border Radius Generator',
+    svgOptimizerPreviewer: 'SVG Optimizer / Previewer',
+    paletteGenerator: 'Palette Generator',
   },
-};
+}

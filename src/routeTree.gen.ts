@@ -12,9 +12,21 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as VisualIndexRouteImport } from './routes/visual/index'
 import { Route as DevIndexRouteImport } from './routes/dev/index'
+import { Route as VisualSvgOptimizerPreviewerRouteImport } from './routes/visual/svg-optimizer-previewer'
+import { Route as VisualPaletteGeneratorRouteImport } from './routes/visual/palette-generator'
+import { Route as VisualCssGradientBuilderRouteImport } from './routes/visual/css-gradient-builder'
 import { Route as VisualColorConverterRouteImport } from './routes/visual/color-converter'
+import { Route as VisualBoxShadowGeneratorRouteImport } from './routes/visual/box-shadow-generator'
+import { Route as VisualBorderRadiusGeneratorRouteImport } from './routes/visual/border-radius-generator'
+import { Route as DevUrlEncoderDecoderRouteImport } from './routes/dev/url-encoder-decoder'
+import { Route as DevTimestampConverterRouteImport } from './routes/dev/timestamp-converter'
+import { Route as DevRegexPlaygroundRouteImport } from './routes/dev/regex-playground'
 import { Route as DevMarkdownEditorRouteImport } from './routes/dev/markdown-editor'
+import { Route as DevJwtDecoderRouteImport } from './routes/dev/jwt-decoder'
+import { Route as DevJsonYamlConverterRouteImport } from './routes/dev/json-yaml-converter'
 import { Route as DevJsonEditorRouteImport } from './routes/dev/json-editor'
+import { Route as DevEmptyLineCleanerRouteImport } from './routes/dev/empty-line-cleaner'
+import { Route as DevDiffViewerRouteImport } from './routes/dev/diff-viewer'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo.tanstack-query'
 
 const IndexRoute = IndexRouteImport.update({
@@ -32,9 +44,53 @@ const DevIndexRoute = DevIndexRouteImport.update({
   path: '/dev/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VisualSvgOptimizerPreviewerRoute =
+  VisualSvgOptimizerPreviewerRouteImport.update({
+    id: '/visual/svg-optimizer-previewer',
+    path: '/visual/svg-optimizer-previewer',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const VisualPaletteGeneratorRoute = VisualPaletteGeneratorRouteImport.update({
+  id: '/visual/palette-generator',
+  path: '/visual/palette-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisualCssGradientBuilderRoute =
+  VisualCssGradientBuilderRouteImport.update({
+    id: '/visual/css-gradient-builder',
+    path: '/visual/css-gradient-builder',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const VisualColorConverterRoute = VisualColorConverterRouteImport.update({
   id: '/visual/color-converter',
   path: '/visual/color-converter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisualBoxShadowGeneratorRoute =
+  VisualBoxShadowGeneratorRouteImport.update({
+    id: '/visual/box-shadow-generator',
+    path: '/visual/box-shadow-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const VisualBorderRadiusGeneratorRoute =
+  VisualBorderRadiusGeneratorRouteImport.update({
+    id: '/visual/border-radius-generator',
+    path: '/visual/border-radius-generator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DevUrlEncoderDecoderRoute = DevUrlEncoderDecoderRouteImport.update({
+  id: '/dev/url-encoder-decoder',
+  path: '/dev/url-encoder-decoder',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevTimestampConverterRoute = DevTimestampConverterRouteImport.update({
+  id: '/dev/timestamp-converter',
+  path: '/dev/timestamp-converter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevRegexPlaygroundRoute = DevRegexPlaygroundRouteImport.update({
+  id: '/dev/regex-playground',
+  path: '/dev/regex-playground',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DevMarkdownEditorRoute = DevMarkdownEditorRouteImport.update({
@@ -42,9 +98,29 @@ const DevMarkdownEditorRoute = DevMarkdownEditorRouteImport.update({
   path: '/dev/markdown-editor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DevJwtDecoderRoute = DevJwtDecoderRouteImport.update({
+  id: '/dev/jwt-decoder',
+  path: '/dev/jwt-decoder',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevJsonYamlConverterRoute = DevJsonYamlConverterRouteImport.update({
+  id: '/dev/json-yaml-converter',
+  path: '/dev/json-yaml-converter',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DevJsonEditorRoute = DevJsonEditorRouteImport.update({
   id: '/dev/json-editor',
   path: '/dev/json-editor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevEmptyLineCleanerRoute = DevEmptyLineCleanerRouteImport.update({
+  id: '/dev/empty-line-cleaner',
+  path: '/dev/empty-line-cleaner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevDiffViewerRoute = DevDiffViewerRouteImport.update({
+  id: '/dev/diff-viewer',
+  path: '/dev/diff-viewer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
@@ -56,18 +132,42 @@ const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/dev/diff-viewer': typeof DevDiffViewerRoute
+  '/dev/empty-line-cleaner': typeof DevEmptyLineCleanerRoute
   '/dev/json-editor': typeof DevJsonEditorRoute
+  '/dev/json-yaml-converter': typeof DevJsonYamlConverterRoute
+  '/dev/jwt-decoder': typeof DevJwtDecoderRoute
   '/dev/markdown-editor': typeof DevMarkdownEditorRoute
+  '/dev/regex-playground': typeof DevRegexPlaygroundRoute
+  '/dev/timestamp-converter': typeof DevTimestampConverterRoute
+  '/dev/url-encoder-decoder': typeof DevUrlEncoderDecoderRoute
+  '/visual/border-radius-generator': typeof VisualBorderRadiusGeneratorRoute
+  '/visual/box-shadow-generator': typeof VisualBoxShadowGeneratorRoute
   '/visual/color-converter': typeof VisualColorConverterRoute
+  '/visual/css-gradient-builder': typeof VisualCssGradientBuilderRoute
+  '/visual/palette-generator': typeof VisualPaletteGeneratorRoute
+  '/visual/svg-optimizer-previewer': typeof VisualSvgOptimizerPreviewerRoute
   '/dev': typeof DevIndexRoute
   '/visual': typeof VisualIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/dev/diff-viewer': typeof DevDiffViewerRoute
+  '/dev/empty-line-cleaner': typeof DevEmptyLineCleanerRoute
   '/dev/json-editor': typeof DevJsonEditorRoute
+  '/dev/json-yaml-converter': typeof DevJsonYamlConverterRoute
+  '/dev/jwt-decoder': typeof DevJwtDecoderRoute
   '/dev/markdown-editor': typeof DevMarkdownEditorRoute
+  '/dev/regex-playground': typeof DevRegexPlaygroundRoute
+  '/dev/timestamp-converter': typeof DevTimestampConverterRoute
+  '/dev/url-encoder-decoder': typeof DevUrlEncoderDecoderRoute
+  '/visual/border-radius-generator': typeof VisualBorderRadiusGeneratorRoute
+  '/visual/box-shadow-generator': typeof VisualBoxShadowGeneratorRoute
   '/visual/color-converter': typeof VisualColorConverterRoute
+  '/visual/css-gradient-builder': typeof VisualCssGradientBuilderRoute
+  '/visual/palette-generator': typeof VisualPaletteGeneratorRoute
+  '/visual/svg-optimizer-previewer': typeof VisualSvgOptimizerPreviewerRoute
   '/dev': typeof DevIndexRoute
   '/visual': typeof VisualIndexRoute
 }
@@ -75,9 +175,21 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/dev/diff-viewer': typeof DevDiffViewerRoute
+  '/dev/empty-line-cleaner': typeof DevEmptyLineCleanerRoute
   '/dev/json-editor': typeof DevJsonEditorRoute
+  '/dev/json-yaml-converter': typeof DevJsonYamlConverterRoute
+  '/dev/jwt-decoder': typeof DevJwtDecoderRoute
   '/dev/markdown-editor': typeof DevMarkdownEditorRoute
+  '/dev/regex-playground': typeof DevRegexPlaygroundRoute
+  '/dev/timestamp-converter': typeof DevTimestampConverterRoute
+  '/dev/url-encoder-decoder': typeof DevUrlEncoderDecoderRoute
+  '/visual/border-radius-generator': typeof VisualBorderRadiusGeneratorRoute
+  '/visual/box-shadow-generator': typeof VisualBoxShadowGeneratorRoute
   '/visual/color-converter': typeof VisualColorConverterRoute
+  '/visual/css-gradient-builder': typeof VisualCssGradientBuilderRoute
+  '/visual/palette-generator': typeof VisualPaletteGeneratorRoute
+  '/visual/svg-optimizer-previewer': typeof VisualSvgOptimizerPreviewerRoute
   '/dev/': typeof DevIndexRoute
   '/visual/': typeof VisualIndexRoute
 }
@@ -86,27 +198,63 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/demo/tanstack-query'
+    | '/dev/diff-viewer'
+    | '/dev/empty-line-cleaner'
     | '/dev/json-editor'
+    | '/dev/json-yaml-converter'
+    | '/dev/jwt-decoder'
     | '/dev/markdown-editor'
+    | '/dev/regex-playground'
+    | '/dev/timestamp-converter'
+    | '/dev/url-encoder-decoder'
+    | '/visual/border-radius-generator'
+    | '/visual/box-shadow-generator'
     | '/visual/color-converter'
+    | '/visual/css-gradient-builder'
+    | '/visual/palette-generator'
+    | '/visual/svg-optimizer-previewer'
     | '/dev'
     | '/visual'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/demo/tanstack-query'
+    | '/dev/diff-viewer'
+    | '/dev/empty-line-cleaner'
     | '/dev/json-editor'
+    | '/dev/json-yaml-converter'
+    | '/dev/jwt-decoder'
     | '/dev/markdown-editor'
+    | '/dev/regex-playground'
+    | '/dev/timestamp-converter'
+    | '/dev/url-encoder-decoder'
+    | '/visual/border-radius-generator'
+    | '/visual/box-shadow-generator'
     | '/visual/color-converter'
+    | '/visual/css-gradient-builder'
+    | '/visual/palette-generator'
+    | '/visual/svg-optimizer-previewer'
     | '/dev'
     | '/visual'
   id:
     | '__root__'
     | '/'
     | '/demo/tanstack-query'
+    | '/dev/diff-viewer'
+    | '/dev/empty-line-cleaner'
     | '/dev/json-editor'
+    | '/dev/json-yaml-converter'
+    | '/dev/jwt-decoder'
     | '/dev/markdown-editor'
+    | '/dev/regex-playground'
+    | '/dev/timestamp-converter'
+    | '/dev/url-encoder-decoder'
+    | '/visual/border-radius-generator'
+    | '/visual/box-shadow-generator'
     | '/visual/color-converter'
+    | '/visual/css-gradient-builder'
+    | '/visual/palette-generator'
+    | '/visual/svg-optimizer-previewer'
     | '/dev/'
     | '/visual/'
   fileRoutesById: FileRoutesById
@@ -114,9 +262,21 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
+  DevDiffViewerRoute: typeof DevDiffViewerRoute
+  DevEmptyLineCleanerRoute: typeof DevEmptyLineCleanerRoute
   DevJsonEditorRoute: typeof DevJsonEditorRoute
+  DevJsonYamlConverterRoute: typeof DevJsonYamlConverterRoute
+  DevJwtDecoderRoute: typeof DevJwtDecoderRoute
   DevMarkdownEditorRoute: typeof DevMarkdownEditorRoute
+  DevRegexPlaygroundRoute: typeof DevRegexPlaygroundRoute
+  DevTimestampConverterRoute: typeof DevTimestampConverterRoute
+  DevUrlEncoderDecoderRoute: typeof DevUrlEncoderDecoderRoute
+  VisualBorderRadiusGeneratorRoute: typeof VisualBorderRadiusGeneratorRoute
+  VisualBoxShadowGeneratorRoute: typeof VisualBoxShadowGeneratorRoute
   VisualColorConverterRoute: typeof VisualColorConverterRoute
+  VisualCssGradientBuilderRoute: typeof VisualCssGradientBuilderRoute
+  VisualPaletteGeneratorRoute: typeof VisualPaletteGeneratorRoute
+  VisualSvgOptimizerPreviewerRoute: typeof VisualSvgOptimizerPreviewerRoute
   DevIndexRoute: typeof DevIndexRoute
   VisualIndexRoute: typeof VisualIndexRoute
 }
@@ -144,11 +304,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DevIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/visual/svg-optimizer-previewer': {
+      id: '/visual/svg-optimizer-previewer'
+      path: '/visual/svg-optimizer-previewer'
+      fullPath: '/visual/svg-optimizer-previewer'
+      preLoaderRoute: typeof VisualSvgOptimizerPreviewerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visual/palette-generator': {
+      id: '/visual/palette-generator'
+      path: '/visual/palette-generator'
+      fullPath: '/visual/palette-generator'
+      preLoaderRoute: typeof VisualPaletteGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visual/css-gradient-builder': {
+      id: '/visual/css-gradient-builder'
+      path: '/visual/css-gradient-builder'
+      fullPath: '/visual/css-gradient-builder'
+      preLoaderRoute: typeof VisualCssGradientBuilderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/visual/color-converter': {
       id: '/visual/color-converter'
       path: '/visual/color-converter'
       fullPath: '/visual/color-converter'
       preLoaderRoute: typeof VisualColorConverterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visual/box-shadow-generator': {
+      id: '/visual/box-shadow-generator'
+      path: '/visual/box-shadow-generator'
+      fullPath: '/visual/box-shadow-generator'
+      preLoaderRoute: typeof VisualBoxShadowGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visual/border-radius-generator': {
+      id: '/visual/border-radius-generator'
+      path: '/visual/border-radius-generator'
+      fullPath: '/visual/border-radius-generator'
+      preLoaderRoute: typeof VisualBorderRadiusGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dev/url-encoder-decoder': {
+      id: '/dev/url-encoder-decoder'
+      path: '/dev/url-encoder-decoder'
+      fullPath: '/dev/url-encoder-decoder'
+      preLoaderRoute: typeof DevUrlEncoderDecoderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dev/timestamp-converter': {
+      id: '/dev/timestamp-converter'
+      path: '/dev/timestamp-converter'
+      fullPath: '/dev/timestamp-converter'
+      preLoaderRoute: typeof DevTimestampConverterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dev/regex-playground': {
+      id: '/dev/regex-playground'
+      path: '/dev/regex-playground'
+      fullPath: '/dev/regex-playground'
+      preLoaderRoute: typeof DevRegexPlaygroundRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dev/markdown-editor': {
@@ -158,11 +374,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DevMarkdownEditorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dev/jwt-decoder': {
+      id: '/dev/jwt-decoder'
+      path: '/dev/jwt-decoder'
+      fullPath: '/dev/jwt-decoder'
+      preLoaderRoute: typeof DevJwtDecoderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dev/json-yaml-converter': {
+      id: '/dev/json-yaml-converter'
+      path: '/dev/json-yaml-converter'
+      fullPath: '/dev/json-yaml-converter'
+      preLoaderRoute: typeof DevJsonYamlConverterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dev/json-editor': {
       id: '/dev/json-editor'
       path: '/dev/json-editor'
       fullPath: '/dev/json-editor'
       preLoaderRoute: typeof DevJsonEditorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dev/empty-line-cleaner': {
+      id: '/dev/empty-line-cleaner'
+      path: '/dev/empty-line-cleaner'
+      fullPath: '/dev/empty-line-cleaner'
+      preLoaderRoute: typeof DevEmptyLineCleanerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dev/diff-viewer': {
+      id: '/dev/diff-viewer'
+      path: '/dev/diff-viewer'
+      fullPath: '/dev/diff-viewer'
+      preLoaderRoute: typeof DevDiffViewerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/tanstack-query': {
@@ -178,9 +422,21 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
+  DevDiffViewerRoute: DevDiffViewerRoute,
+  DevEmptyLineCleanerRoute: DevEmptyLineCleanerRoute,
   DevJsonEditorRoute: DevJsonEditorRoute,
+  DevJsonYamlConverterRoute: DevJsonYamlConverterRoute,
+  DevJwtDecoderRoute: DevJwtDecoderRoute,
   DevMarkdownEditorRoute: DevMarkdownEditorRoute,
+  DevRegexPlaygroundRoute: DevRegexPlaygroundRoute,
+  DevTimestampConverterRoute: DevTimestampConverterRoute,
+  DevUrlEncoderDecoderRoute: DevUrlEncoderDecoderRoute,
+  VisualBorderRadiusGeneratorRoute: VisualBorderRadiusGeneratorRoute,
+  VisualBoxShadowGeneratorRoute: VisualBoxShadowGeneratorRoute,
   VisualColorConverterRoute: VisualColorConverterRoute,
+  VisualCssGradientBuilderRoute: VisualCssGradientBuilderRoute,
+  VisualPaletteGeneratorRoute: VisualPaletteGeneratorRoute,
+  VisualSvgOptimizerPreviewerRoute: VisualSvgOptimizerPreviewerRoute,
   DevIndexRoute: DevIndexRoute,
   VisualIndexRoute: VisualIndexRoute,
 }

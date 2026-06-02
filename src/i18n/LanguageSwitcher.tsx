@@ -1,29 +1,29 @@
-import { useState, useRef, useEffect } from 'react';
-import { useAtom } from 'jotai';
-import { languageAtom, saveLanguage } from './languageAtom';
-import { languages, languageLabels } from './types';
-import type { Language } from './types';
+import { useState, useRef, useEffect } from 'react'
+import { useAtom } from 'jotai'
+import { languageAtom, saveLanguage } from '@/i18n/languageAtom.ts'
+import { languages, languageLabels } from '@/i18n/types.ts'
+import type { Language } from '@/i18n/types.ts'
 
 export default function LanguageSwitcher() {
-  const [currentLang, setCurrentLang] = useAtom(languageAtom);
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const [currentLang, setCurrentLang] = useAtom(languageAtom)
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false);
+        setOpen(false)
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   const handleSelect = (lang: Language) => {
-    setCurrentLang(lang);
-    saveLanguage(lang);
-    setOpen(false);
-  };
+    setCurrentLang(lang)
+    saveLanguage(lang)
+    setOpen(false)
+  }
 
   return (
     <div ref={ref} className="relative">
@@ -38,7 +38,12 @@ export default function LanguageSwitcher() {
           stroke="currentColor"
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
       </button>
       {open && (
@@ -48,7 +53,9 @@ export default function LanguageSwitcher() {
               key={lang}
               onClick={() => handleSelect(lang)}
               className={`block w-full text-left px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition ${
-                lang === currentLang ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : 'text-gray-700 dark:text-gray-300'
+                lang === currentLang
+                  ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium'
+                  : 'text-gray-700 dark:text-gray-300'
               }`}
             >
               {languageLabels[lang]}
@@ -57,5 +64,5 @@ export default function LanguageSwitcher() {
         </div>
       )}
     </div>
-  );
+  )
 }
