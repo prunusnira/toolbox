@@ -50,7 +50,7 @@ export function Panel({
         <h2 className="text-sm font-semibold text-gray-700">{title}</h2>
         {actions}
       </div>
-      <div className="p-3">{children}</div>
+      <div className="overflow-hidden p-3">{children}</div>
     </section>
   )
 }
@@ -81,7 +81,7 @@ export function CopyButton({
 
 export function ResultBox({ value }: { value: string }) {
   return (
-    <pre className="min-h-72 overflow-auto rounded border border-gray-200 bg-gray-50 p-3 font-mono text-sm text-gray-800">
+    <pre className="w-full max-w-full min-h-72 overflow-hidden overflow-y-auto whitespace-pre-wrap break-all rounded border border-gray-200 bg-gray-50 p-3 font-mono text-sm text-gray-800">
       {value}
     </pre>
   )

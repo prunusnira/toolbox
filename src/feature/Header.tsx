@@ -24,7 +24,7 @@ export default function Header() {
             <Link
               to={item.path || '#'}
               onClick={() => setSelectedMenu(item)}
-              className="[&.active]:font-bold flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="[&.active]:font-bold flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
             >
               {item.id === 'home' && (
                 <img src="/logo.png" alt="logo" className="h-6 w-6" />

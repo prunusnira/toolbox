@@ -8,7 +8,7 @@ interface MenuItemProps extends MenuType {
 export const MenuItem = ({id, path, name, onClick}: MenuItemProps) => {
   return (
     <li key={id} className="mb-2">
-      <Link to={path || '#'} className="text-blue-500 dark:text-blue-400 hover:underline" onClick={onClick}>
+      <Link to={path || '#'} className="text-blue-500 dark:text-blue-300 hover:underline" onClick={onClick}>
         {name}
       </Link>
     </li>
